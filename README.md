@@ -44,7 +44,7 @@ Capabilities:
 ## Requirements
 
 - Python >= 3.11
-- [httpx](https://pypi.org/project/httpx/) >= 0.28
+- [httpx](https://pypi.org/project/httpx/) >= 0.27
 
 ## Development
 

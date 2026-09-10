@@ -27,7 +27,7 @@ commit messages, and review notes.
 
 - Python >= 3.11, hatchling, src-layout (`src/pydanalock/cloud/`), PEP 420
   namespace package `pydanalock` shared with `pydanalock-ble`.
-- Runtime dependency: `httpx>=0.28`; dev tools: pytest, pytest-asyncio, ruff,
+- Runtime dependency: `httpx>=0.27`; dev tools: pytest, pytest-asyncio, ruff,
   mypy (strict for `src/`).
 
 ```bash

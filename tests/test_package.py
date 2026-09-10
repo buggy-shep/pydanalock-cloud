@@ -23,7 +23,7 @@ PUBLIC_API = {
 
 
 def test_package_imports() -> None:
-    assert pydanalock.cloud.__version__ == "0.5.0"
+    assert pydanalock.cloud.__version__ == "0.5.1"
 
 
 def test_public_api_surface() -> None:
@@ -39,3 +39,11 @@ def test_version_matches_pyproject() -> None:
     with pyproject.open("rb") as handle:
         version = tomllib.load(handle)["project"]["version"]
     assert version == pydanalock.cloud.__version__
+
+
+def test_httpx_dependency_floor() -> None:
+    """The httpx floor stays Home Assistant compatible (spec 0010 R1)."""
+    pyproject = Path(__file__).resolve().parent.parent / "pyproject.toml"
+    with pyproject.open("rb") as handle:
+        dependencies = tomllib.load(handle)["project"]["dependencies"]
+    assert "httpx>=0.27" in dependencies

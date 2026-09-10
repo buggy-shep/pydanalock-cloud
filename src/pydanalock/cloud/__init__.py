@@ -10,7 +10,7 @@ from .client import DanalockCloud
 from .errors import ApiError, AuthError, DanalockCloudError, DeviceNotFoundError
 from .models import DeviceKey, DeviceSummary, FirmwareVersion, Permission
 
-__version__ = "0.5.0"
+__version__ = "0.5.1"
 
 __all__ = [
     "ApiError",

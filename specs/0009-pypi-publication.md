@@ -20,7 +20,8 @@ users install it directly (`pip install pydanalock-cloud`).
 
 ## Requirements
 
-- R1 (MUST) `[project].name` is `pydanalock-cloud` and `version` is `0.5.0`.
+- R1 (MUST) `[project].name` is `pydanalock-cloud` and `version` is `0.5.0`
+  (the version is superseded by spec 0010: 0.5.1).
   `pyproject.toml` declares `[project.urls]` (`Homepage`, `Repository`,
   `Issues`, `Changelog`, all under `buggy-shep/pydanalock-cloud`) and a
   `release` optional-dependency group (`build>=1.2`, `twine>=5`).
