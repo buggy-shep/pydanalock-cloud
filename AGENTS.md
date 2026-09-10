@@ -109,7 +109,29 @@ A feature branch may merge into `master` only when both hold:
 - Everything in this repo is English (§2); keep the disclaimers in place
   (unofficial, not affiliated with Danalock AS, own devices only).
 
-## 10. References
+## 10. Release runbook (new versions)
+
+Ship a release only from a green `master`:
+
+1. Bump the version in one change: `pyproject.toml` `[project].version` and
+   `src/pydanalock/cloud/__init__.py` `__version__`. `test_version_matches_pyproject`
+   enforces they match; no other source or test file pins the version. SemVer;
+   `0.x` while the API is unstable.
+2. Feature branch `feat/NNNN-slug` (spec + tests + code **and the version
+   bump**), gate (§3), skeptic (§7), squash-merge into `master`.
+3. Push `master`.
+4. Create a GitHub Release with tag `vX.Y.Z` equal to the version. Publishing
+   the release triggers `publish.yml`, which builds and uploads to PyPI via
+   Trusted Publishing. A plain tag push does **not** publish.
+5. Run the `testpypi.yml` dry run for every packaging/metadata change, and
+   always before the first production release (spec 0009 R6).
+6. Never reuse a published version; if a release is wrong, bump the patch
+   version and repeat. Verify with
+   `pip install pydanalock-cloud==X.Y.Z`.
+7. Keep the runtime dependency floor compatible with Home Assistant's pinned
+   `httpx` (spec 0010; guarded by `test_httpx_dependency_floor`).
+
+## 11. References
 
 - Specs: `specs/` (0001 OAuth2 authentication is the first deliverable).
 - Group contract: `DeviceKey` (specs 0002/0003).

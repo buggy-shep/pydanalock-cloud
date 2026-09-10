@@ -1,5 +1,6 @@
 """Import smoke tests."""
 
+import re
 import tomllib
 from pathlib import Path
 
@@ -23,7 +24,7 @@ PUBLIC_API = {
 
 
 def test_package_imports() -> None:
-    assert pydanalock.cloud.__version__ == "0.5.1"
+    assert re.fullmatch(r"\d+\.\d+\.\d+", pydanalock.cloud.__version__)
 
 
 def test_public_api_surface() -> None:
