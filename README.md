@@ -41,6 +41,28 @@ Capabilities:
   URL in the result is a short-lived signed link and must not be
   persisted) — [spec 0006](specs/0006-firmware-latest.md)
 
+### Known cloud API surface
+
+The cloud API is much larger than the implemented subset. The table below
+summarises how much of the known surface is covered here; the full per-endpoint
+catalogue is [spec 0011](specs/0011-cloud-api-surface.md), which is the source
+of truth for these numbers.
+
+| Domain | Known | Implemented |
+|---|---|---|
+| Auth and tokens | 7 | 1 |
+| Devices and key material | 9 | 2 |
+| Firmware | 4 | 1 |
+| Enrollment, discovery, and device management | 10 | 0 |
+| Users and account | 11 | 0 |
+| Legacy platform (`ekey/v2`) | 8 | 0 |
+| Legacy locks and advertisements (`ekey/v3`) | 7 | 0 |
+| Bridge | 2 | 0 |
+| Invitations | 2 | 0 |
+| PIN-code aliases | 3 | 0 |
+| Support | 1 | 0 |
+| **Total** | **64** | **4** |
+
 ## Requirements
 
 - Python >= 3.11
