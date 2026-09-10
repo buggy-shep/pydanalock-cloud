@@ -1,0 +1,75 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pydanalock-cloud"
+version = "0.5.0"
+description = "Unofficial Python client for the Danalock cloud API (OAuth2, devices, keys)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "The pydanalock-cloud contributors" }]
+keywords = ["danalock", "cloud", "oauth2", "smart-lock", "home-automation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Home Automation",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.28",
+]
+
+[project.urls]
+Homepage = "https://github.com/buggy-shep/pydanalock-cloud"
+Repository = "https://github.com/buggy-shep/pydanalock-cloud"
+Issues = "https://github.com/buggy-shep/pydanalock-cloud/issues"
+Changelog = "https://github.com/buggy-shep/pydanalock-cloud/releases"
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.11",
+    "pytest>=8.2",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.6",
+]
+release = [
+    "build>=1.2",
+    "twine>=5",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pydanalock"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [".kilo"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not live'"
+asyncio_mode = "auto"
+markers = [
+    "live: talks to a real lock or the real cloud; run manually only",
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]
+mypy_path = "src"
+explicit_package_bases = true
+namespace_packages = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "RUF", "SIM", "UP", "W"]
